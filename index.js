@@ -252,24 +252,29 @@ let movies = [
   },
 ];
 
+// 리스트 목록
+
 const list = document.getElementById("list");
 
 function showList(val = "") {
   list.innerHTML = "";
   let res = movies.forEach((moive) => {
     if (moive.name.includes(val)) {
-      let li = document.createElement("li");
-      li.innerHTML = `
+      let div = document.createElement("div");
+      div.innerHTML = `
+        <div class ="card" onclick ="card()" id ="${moive.id}"></div>
         <img src ="${moive.URL}" alt ="${moive.name}"></img>
-        <p>제목: ${moive.name}</p>
-        <p>내용 요약: ${moive.type}</p>
+        <h3>제목: ${moive.name}</h3>
+        <p>내용요약 <br><br> ${moive.type}</p>
         <p>평점: ${moive.vote_average}</p>
         `;
 
-      list.appendChild(li);
+      list.appendChild(div);
     }
-  }); //end showList
+  });
 }
+
+// 이미지 클릭 시 id 호출
 
 // 검색기능
 
@@ -284,3 +289,7 @@ searchBtn.addEventListener("click", (e) => {
   console.log(val);
   showList(val);
 });
+
+//추가 기능
+
+//삭제 기능
