@@ -141,26 +141,32 @@ let movies = [
 
 const list = document.getElementById("list");
 
+// 자바스크립트 안에서 html 제어
+// 1. showlist 가져와서 value값 찾아 리스트로 표시
+// 2. innerHTML에 ${} 구문 이용하여 id, 이미지, 제목, 내용, 평점 노출
+// 3. 해당 HTML 구문 안에 강제로 밸류값 넣어서 HTML 스크립트로 ID 노출
+
 function showList(val = "") {
   list.innerHTML = "";
   let res = movies.forEach((moive) => {
     if (moive.name.includes(val)) {
       let div = document.createElement("div");
       div.innerHTML = `
-        <div id = "${moive.id}"></div>
-        <div class="click" onclick ="say()">ID</div>
+        <div class ="card">
+        <div id = "${moive.id}">
+        <button class="click" type="text" value=영화ID:${moive.id} onclick='checkvalue(this)'>영화 ID 확인</button>
         <img src ="${moive.URL}" alt ="${moive.name}"></img>
         <h3>제목: ${moive.name}</h3>
         <p>내용요약 <br><br> ${moive.type}</p>
         <p>평점: ${moive.vote_average}</p>
+        </div>
+        </div>
         `;
 
       list.appendChild(div);
     }
   });
 }
-
-// 이미지 클릭 시 id 호출
 
 // 검색기능
 
