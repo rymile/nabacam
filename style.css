@@ -29,15 +29,22 @@ button {
 }
 
 #list > div > img {
-  width: 30%;
+  margin-top: 100px;
+}
+
+.card {
+  width: 500px;
+  margin: auto;
+  background-color: burlywood;
 }
 
 .click {
-  width: 50px;
+  width: 100px;
   height: 50px;
   border: 1px solid black;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
   padding: 10px;
+  background-color: white;
 }
