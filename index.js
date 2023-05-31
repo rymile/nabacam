@@ -138,7 +138,6 @@ let movies = [
 ];
 
 // 리스트 목록
-
 const list = document.getElementById("list");
 
 // 자바스크립트 안에서 html 제어
@@ -149,8 +148,11 @@ const list = document.getElementById("list");
 function showList(val = "") {
   list.innerHTML = "";
   let res = movies.forEach((moive) => {
+    // 4. if문에서 movie.namd을 포함하는 val값을 만족시킬 때
+    // 5. div태그에서 새로운 div태그를 생성할 수 있게 코드를 구현
     if (moive.name.includes(val)) {
       let div = document.createElement("div");
+      // 6. div.innerHTML에 5번의 사양에 맞게 각각의 정보를 담을 수 있는 html 태그를 작성
       div.innerHTML = `
         <div class ="card">
         <div id = "${moive.id}">
@@ -163,25 +165,27 @@ function showList(val = "") {
         </div>
         `;
 
+      // 7. 해당 함수가 종료되기 전 list에 div태그를 추가해줄 수 있게 appendChild를 선언
       list.appendChild(div);
     }
   });
 }
 
 // 검색기능
-
 showList();
 
+// 8. 위에서 구현한 showlist를 불러오는 기능을 구현
+// 9. getElementById로 html에서 만들어둔 버튼 Id를 가져온다.
 let searchInput = document.getElementById("search");
 let searchBtn = document.getElementById("searchBtn");
-
+// 10. 검색버튼에서 addEventListner부분을 구현
+// >> preventDefault를 삽입해서 검색 후 새로고침을 방지
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  // 11. val값을 searchInput의 밸류값으로 설정
   let val = searchInput.value;
+  // 12. 코드 로직이 잘 도는지 console.log로 확인
   console.log(val);
+  // 13. showlist(val)로 showlist 함수 호출
   showList(val);
 });
-
-//추가 기능
-
-//삭제 기능
