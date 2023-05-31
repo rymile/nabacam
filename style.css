@@ -1,59 +1,48 @@
-* {
-  box-sizing: border-box;
-}
-
 div {
   list-style-type: none;
+  grid-template-columns: auto;
 }
 
+/*상단부 영화 검색 창 중앙정렬*/
+.txt {
+  text-align: center;
+}
+
+/*상단부 검색버튼 중앙정렬*/
+.btnbox {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*상단부 검색창, 버튼 크기 조절*/
 input,
 button {
   padding: 5px 10px;
 }
 
+/*리스트, div, card까지 css로 제어*/
 #list {
   border: 1px solid #ccc;
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 90%;
   margin: auto;
 }
 
 #list > div {
-  flex-basis: 80%;
+  flex-basis: 100%;
   margin-bottom: 20px;
   margin: auto;
   text-align: center;
-}
-
-#list > div > img {
-  margin-top: 100px;
 }
 
 .card {
   width: 500px;
+  height: 50%;
   margin: auto;
   background-color: burlywood;
 }
 
-.click {
-  width: 100px;
-  height: 50px;
-  border: 1px solid black;
-  display: inline-block;
-  margin-bottom: 10px;
-  text-align: center;
-  padding: 10px;
-  background-color: white;
-}
-
-.txt {
-  text-align: center;
-}
-
-.btnbox {
-  text-align: center;
-  margin-bottom: 20px;
-}
+/*카드리스트화, 이미지 클릭 시 ID출력 구현 완료*/
+/*이미지 크기정렬, css꾸미기*/

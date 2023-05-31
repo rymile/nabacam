@@ -141,23 +141,22 @@ let movies = [
 const list = document.getElementById("list");
 
 // 자바스크립트 안에서 html 제어
-// 1. showlist 가져와서 value값 찾아 리스트로 표시
-// 2. innerHTML에 ${} 구문 이용하여 id, 이미지, 제목, 내용, 평점 노출
-// 3. 해당 HTML 구문 안에 강제로 밸류값 넣어서 HTML 스크립트로 ID 노출
-
+// showlist 가져와서 value값 찾아 리스트로 표시
+// > forEach 구문으로 movie리스트 순회
+// innerHTML에 ${} 구문 이용하여 id, 이미지, 제목, 내용, 평점 노출
+// 해당 HTML 구문 안에 강제로 밸류값 넣어서 HTML 스크립트로 ID 노출
 function showList(val = "") {
   list.innerHTML = "";
   let res = movies.forEach((moive) => {
-    // 4. if문에서 movie.namd을 포함하는 val값을 만족시킬 때
-    // 5. div태그에서 새로운 div태그를 생성할 수 있게 코드를 구현
+    // if문에서 movie.name을 포함하는 val값을 만족시킬 때
+    // div태그에서 새로운 div태그를 생성할 수 있게 코드를 구현
     if (moive.name.includes(val)) {
       let div = document.createElement("div");
-      // 6. div.innerHTML에 5번의 사양에 맞게 각각의 정보를 담을 수 있는 html 태그를 작성
+      // div.innerHTML에 5번의 사양에 맞게 각각의 정보를 담을 수 있는 html 태그를 작성
+      // 해당 innerHTML안에서 이미지 부분에 onclick기능을 넣어 영화의 ID값을 가져올 수 있도록 함
       div.innerHTML = `
-        <div class ="card">
-        <div id = "${moive.id}">
-        <button class="click" type="text" value=영화ID:${moive.id} onclick='checkvalue(this)'>영화 ID 확인</button>
-        <img src ="${moive.URL}" alt ="${moive.name}"></img>
+        <div class ="card" id="${moive.id}">
+        <img id="image" src="${moive.URL}" alt="${moive.name}" onclick="alert('영화ID:${moive.id}')" style="cursor:pointer;">
         <h3>제목: ${moive.name}</h3>
         <p>내용요약 <br><br> ${moive.type}</p>
         <p>평점: ${moive.vote_average}</p>
@@ -165,7 +164,7 @@ function showList(val = "") {
         </div>
         `;
 
-      // 7. 해당 함수가 종료되기 전 list에 div태그를 추가해줄 수 있게 appendChild를 선언
+      // 8. 해당 함수가 종료되기 전 list에 div태그를 추가해줄 수 있게 appendChild를 선언
       list.appendChild(div);
     }
   });
@@ -174,18 +173,20 @@ function showList(val = "") {
 // 검색기능
 showList();
 
-// 8. 위에서 구현한 showlist를 불러오는 기능을 구현
-// 9. getElementById로 html에서 만들어둔 버튼 Id를 가져온다.
+// 위에서 구현한 showlist를 불러오는 기능을 구현
+//  getElementById로 html에서 만들어둔 버튼 Id를 가져온다.
 let searchInput = document.getElementById("search");
 let searchBtn = document.getElementById("searchBtn");
-// 10. 검색버튼에서 addEventListner부분을 구현
-// >> preventDefault를 삽입해서 검색 후 새로고침을 방지
+// 검색버튼에서 addEventListner부분을 구현
+// >> preventDefault를 삽입해서 검색 후 새로고침을 방지()
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  // 11. val값을 searchInput의 밸류값으로 설정
+  // val값을 searchInput의 밸류값으로 설정
   let val = searchInput.value;
-  // 12. 코드 로직이 잘 도는지 console.log로 확인
+  // 코드 로직이 잘 도는지 console.log로 확인
   console.log(val);
-  // 13. showlist(val)로 showlist 함수 호출
+  // showlist(val)로 showlist 함수 호출
   showList(val);
 });
+
+// 대소문자, 공백 제한없이 검색기능 구현 필요
