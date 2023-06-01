@@ -156,7 +156,7 @@ function showList(val = "") {
       // 해당 innerHTML안에서 이미지 부분에 onclick기능을 넣어 영화의 ID값을 가져올 수 있도록 함
       div.innerHTML = `
         <div class ="card" id="${moive.id}">
-        <img id="image" src="${moive.URL}" alt="${moive.name}" onclick="alert('영화ID:${moive.id}')" style="cursor:pointer;">
+        <img id="image" src="${moive.URL}" alt="${moive.name}" onclick="alert('영화ID: ${moive.id}입니다.')" style="cursor:pointer;">
         <h3>제목: ${moive.name}</h3>
         <p>내용요약 <br><br> ${moive.type}</p>
         <p>평점: ${moive.vote_average}</p>
@@ -188,5 +188,3 @@ searchBtn.addEventListener("click", (e) => {
   // showlist(val)로 showlist 함수 호출
   showList(val);
 });
-
-// 대소문자, 공백 제한없이 검색기능 구현 필요
